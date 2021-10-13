@@ -94,8 +94,8 @@ export const NavbarGeneral = (props) => {
                                     </div>
                                     <div>
                                         <CustomButton
-                                             className="btn-gray rounded-circle d-lg-none circle__padding__sm ms-2">
-                                             onClick={() => setShow(true)}
+                                            className="btn-gray rounded-circle d-lg-none circle__padding__sm ms-2">
+                                            onClick={() => setShow(true)}
                                            
                                             <Menu size={20} />
                                         </CustomButton>

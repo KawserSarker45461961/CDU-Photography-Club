@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import './style.scss';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
@@ -8,10 +8,21 @@ import { ChevronDown, Menu, Upload, User } from 'react-feather';
 import { Container } from '../container/Index';
 import { CustomButton } from '../button/Index';
 import { SearchSmall } from '../search/Index'
+import { CustomDrawer } from '../drawer/Index'
 import { Images } from '../../utils/Images';
 
 export const NavbarGeneral = (props) => {
     const history = useHistory()
+    const [show, setShow] = useState(false)
+
+     // handle to go upload
+    const goUpload = () => {
+       if (localStorage.getItem("token")) {
+            history.push("/account/upload")
+         } else {
+             history.push("/login")
+            }
+        }
 
     return (
         <div className="navbar-general bg-white">
@@ -55,24 +66,37 @@ export const NavbarGeneral = (props) => {
                                 </div>
                             }
 
-                            {/* Links container */}
+                            {/* Links container & drawer menu container */}
                             <div className="ms-auto">
                                 <div className="d-flex">
-                                    <div>
-                                        <CustomButton className="btn-gray rounded-circle circle__padding__sm">
-                                            <User size={20} />
-                                        </CustomButton>
+                                <div>
+                                        <DropdownButton
+                                            variant="white"
+                                            className="profile-dropdown-btn-container"
+                                            drop="down"
+                                            align="end"
+                                            title={<User size={20} />}
+                                        >
+                                            <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                                            <Dropdown.Item href="#/action-2">My Media</Dropdown.Item>
+                                            <Dropdown.Item href="#/action-3">Upload</Dropdown.Item>
+                                            <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
+                                        </DropdownButton>
                                     </div>
                                     <div>
                                         <CustomButton
                                             className="btn-success border-0 d-none d-lg-block ms-2"
                                             style={{ fontSize: 14, borderRadius: 25, padding: "6px 20px", marginTop: 2 }}
-                                        >
+                                        >   onclick={goUpload}
+
                                             <Upload size={14} /> Upload
                                         </CustomButton>
                                     </div>
                                     <div>
-                                        <CustomButton className="btn-gray rounded-circle d-lg-none circle__padding__sm ms-2">
+                                        <CustomButton
+                                             className="btn-gray rounded-circle d-lg-none circle__padding__sm ms-2">
+                                             onClick={() => setShow(true)}
+                                           
                                             <Menu size={20} />
                                         </CustomButton>
                                     </div>
@@ -82,6 +106,11 @@ export const NavbarGeneral = (props) => {
                     </Container.Column>
                 </Container.Row>
             </Container.Fluid>
+            {/* Mobile drawer */}
+            <CustomDrawer
+                show={show}
+                onHide={() => setShow(false)}
+            />
         </div>
     );
 };

@@ -27,11 +27,10 @@ const Show = () => {
     return (
         <div>
             <NavbarGeneral searchable />
-
             <ProfileBanner
                 profileSrc={Images.User}
                 backgroundSrc={Images.BannerXl}
-                name={"abdullah al mamun"}
+                name={"Kawser"}
             />
 
             <Container.Fluid className="py-4">

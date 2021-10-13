@@ -11,6 +11,7 @@ import Home from './pages/home/Index'
 import Photos from './pages/photos/Index'
 import PhotoShow from './pages/photos/Show'
 import UserProfile from './pages/users/Show'
+import Login from './pages/login/Index'
 import FourOFour from './pages/fourOfour/Index'
 
 function App() {

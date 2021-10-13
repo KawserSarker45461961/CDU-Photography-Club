@@ -11,8 +11,9 @@ import Home from './pages/home/Index'
 import Photos from './pages/photos/Index'
 import PhotoShow from './pages/photos/Show'
 import UserProfile from './pages/users/Show'
-import Login from './pages/login/Index'
 import FourOFour from './pages/fourOfour/Index'
+import Login from './pages/login/Index'
+
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
             <Route exact path="/photos" component={Photos} />
             <Route exact path="/photo/:slug" component={PhotoShow} />
             <Route exact path="/users/:id" component={UserProfile} />
-
+            <Route exact path="/login" component={Login} />
             <Route path="*" component={FourOFour} />
           </Switch>
         </ScrollToTop>

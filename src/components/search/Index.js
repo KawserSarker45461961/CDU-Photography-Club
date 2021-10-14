@@ -3,7 +3,7 @@ import React from 'react';
 import './style.scss';
 import { useForm } from 'react-hook-form';
 import { Search } from 'react-feather'
-
+import { useQuery } from '../query/Index';
 
 // Large search component
 export const SearchLarge = (props) => {
@@ -36,6 +36,7 @@ export const SearchLarge = (props) => {
 
 // Small search component
 export const SearchSmall = (props) => {
+    const { query } = useQuery()
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     // handle submit

@@ -87,15 +87,15 @@ export const NavbarGeneral = (props) => {
                                         <CustomButton
                                             className="btn-success border-0 d-none d-lg-block ms-2"
                                             style={{ fontSize: 14, borderRadius: 25, padding: "6px 20px", marginTop: 2 }}
-                                        >   onclick={goUpload}
+                                            onclick={goUpload}>  
 
                                             <Upload size={14} /> Upload
                                         </CustomButton>
                                     </div>
                                     <div>
                                         <CustomButton
-                                            className="btn-gray rounded-circle d-lg-none circle__padding__sm ms-2">
-                                            onClick={() => setShow(true)}
+                                            className="btn-gray rounded-circle d-lg-none circle__padding__sm ms-2"
+                                            onClick={() => setShow(true)}>
                                            
                                             <Menu size={20} />
                                         </CustomButton>

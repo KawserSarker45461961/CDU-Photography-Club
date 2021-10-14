@@ -17,8 +17,6 @@ import Register from './pages/register/Index'
 import Reset from './pages/reset/Index'
 import FourOFour from './pages/fourOfour/Index'
 
-
-
 function App() {
   return (
     <div className="App">

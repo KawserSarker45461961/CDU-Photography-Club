@@ -13,8 +13,8 @@ const Index = () => {
 
                     {/* If media not available */}
                     <Container.Column className="text-center py-30">
-                        <h4 className="text-dark mb-2">Wow, that's a very clean portfolio!</h4>
-                        <p className="font-14 text-muted mb-4">Upload your favourite images on PiratePixel.</p>
+                        <h4 className="text-dark mb-2">Great work</h4>
+                        <p className="font-14 text-muted mb-4">submit your favourite photos</p>
                         <Link to="/account/upload">
                             <CustomButton
                                 className="font-15 btn-success border-0"

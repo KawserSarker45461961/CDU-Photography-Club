@@ -8,7 +8,7 @@ import { Images } from '../../utils/Images';
 
 const Index = () => {
     const members = [
-        { image: Images.CTO, name: "Abdullah Al Mamun", position: "CTO" },
+        { image: Images.CTO, name: "abul", position: "CTO" },
         { image: Images.VP, name: "John", position: "VP of Engineering" },
         { image: Images.TL, name: "Bjorn", position: "Engineering Manager" },
         { image: Images.VP, name: "Ivar", position: "Staff Software Engineer" },
@@ -30,14 +30,14 @@ const Index = () => {
                         <hr />
                         <p className="fw-bold font-17 mb-3">Company</p>
                         <p className="fw-bolder font-15 mb-0">Address:</p>
-                        <p className="font-15 mb-0">PiratePixel</p>
-                        <p className="font-15 mb-0">Dhaka</p>
-                        <p className="font-15 mb-3">Bangladesh</p>
+                        <p className="font-15 mb-0">CDU Photography club</p>
+                        <p className="font-15 mb-0">Darwin</p>
+                        <p className="font-15 mb-3">Australia</p>
 
                         <p className="fw-bolder font-15 mb-0">Contact</p>
-                        <p className="font-15 mb-0">Phone: +880 1XXX XXXX XX</p>
-                        <p className="font-15 mb-3">Email address: <a className="text-decoration-none text-primary" href="mailto:info@piratepixel.com">info@piratepixel.com</a></p>
-                        <p className="font-15 mb-0"><span className="text-primary">PiratePixel</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p className="font-15 mb-0">Phone: +61 xxx xxx xxx</p>
+                        <p className="font-15 mb-3">Email address: <a className="text-decoration-none text-primary" href="mailto:info@piratepixel.com">info@cdu.edu.au</a></p>
+                        <p className="font-15 mb-0"><span className="text-primary">CDU Photography Club</span> </p>
                         <br />
                         <hr className="mb-4" />
 
@@ -52,7 +52,7 @@ const Index = () => {
                                 <div className="flex-grow-1 ps-md-5 pt-4 pt-md-2 py-2">
                                     <h6 className="text-capitalize fw-bolder font-15 mb-3">{item.name}, {item.position}</h6>
                                     <p className="font-15  mb-0">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                        This is empty now
                                     </p>
                                 </div>
                             </div>

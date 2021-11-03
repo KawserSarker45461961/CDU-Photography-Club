@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Search } from 'react-feather'
 import { useQuery } from '../query/Index';
 
+
 // Large search component
 export const SearchLarge = (props) => {
     const { register, handleSubmit, formState: { errors } } = useForm()
@@ -49,6 +50,7 @@ export const SearchSmall = (props) => {
                     <input
                         type="text"
                         placeholder="Search images"
+                        defaultValue={query || null}
                         className={errors.query ? "form-control shadow-none error" : "form-control shadow-none"}
                         {...register("query", { required: true })}
                     />

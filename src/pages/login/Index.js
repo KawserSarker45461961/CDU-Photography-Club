@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 // import { useHistory } from 'react-router';
+import FacebookLogin from 'react-facebook-login';
 import { Unlock } from 'react-feather';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -14,7 +15,16 @@ import { CustomButton } from '../../components/button/Index';
 const Index = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [isLoading, setLoading] = useState(false)
-
+       // Facebook response
+       const responseFacebook = (response) => {
+        const data = {
+            name: response.name,
+            email: response.email
+        }
+        console.log(data);
+    }
+   
+   
     const onSubmit = async (data) => {
         console.log(data);
 

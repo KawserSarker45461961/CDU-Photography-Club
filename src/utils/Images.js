@@ -13,7 +13,7 @@ export const Images = {
     User,
     BannerXl,
     Register,
-    CTO,
-    VP,
-    TL
+    // CTO,
+    // VP,
+    // TL
 }

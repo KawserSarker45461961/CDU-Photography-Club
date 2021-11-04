@@ -12,5 +12,8 @@ export const Images = {
     Avatar,
     User,
     BannerXl,
-    Register
+    Register,
+    CTO,
+    VP,
+    TL
 }

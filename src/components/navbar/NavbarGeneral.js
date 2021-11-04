@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import './style.scss';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
@@ -10,19 +10,43 @@ import { CustomButton } from '../button/Index';
 import { SearchSmall } from '../search/Index'
 import { CustomDrawer } from '../drawer/Index'
 import { Images } from '../../utils/Images';
+import { Requests } from '../../utils/requests/Index'
 
 export const NavbarGeneral = (props) => {
     const history = useHistory()
+    const [data, setData] = useState([])
     const [show, setShow] = useState(false)
 
-     // handle to go upload
-    const goUpload = () => {
-       if (localStorage.getItem("token")) {
-            history.push("/account/upload")
-         } else {
-             history.push("/login")
+    // fetch data
+    const fetchData = useCallback(async () => {
+        try {
+            const response = await Requests.Web.Category()
+            if (response && response.status === 200) {
+                setData(response.data.data)
             }
+        } catch (error) {
+            if (error) setData([])
         }
+    }, [])
+
+    useEffect(() => {
+        fetchData()
+    }, [fetchData])
+
+    // handle to go upload
+    const goUpload = () => {
+        if (localStorage.getItem("token")) {
+            history.push("/account/upload")
+        } else {
+            history.push("/login")
+        }
+    }
+
+    // handle logout
+    const doLogout = () => {
+        localStorage.removeItem("token")
+        history.push("/")
+    }
 
     return (
         <div className="navbar-general bg-white">
@@ -33,7 +57,7 @@ export const NavbarGeneral = (props) => {
 
                             {/* Logo containerc */}
                             <div className="logo-contaier">
-                                <Link to="/"><img src={Images.Logo} className="img-fluid" alt="cdu logo" /></Link>
+                                <Link to="/"><img src={Images.Logo} className="img-fluid" alt="Pirate Pixel logo" /></Link>
                             </div>
 
                             {/* Items container */}
@@ -52,14 +76,15 @@ export const NavbarGeneral = (props) => {
                                                 className="shadow-none"
                                                 title={<span>Categories <ChevronDown size={15} /></span>}
                                             >
-                                                <Dropdown.Item href="#/action-1">IT Code Fair</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-2">CDU Cultural Programs</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-3">BSA CDU Gathering</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-3">BSA CDU Sports Event</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-3">CDU Orrientation</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-3">Mid Autumn Festival</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-3">Chinese Culture Experience Programs</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-3">Annual Performance at Contucius classroom</Dropdown.Item>
+                                                {data && data.length ?
+                                                    data.map((item, i) =>
+                                                        <Dropdown.Item
+                                                            key={i}
+                                                            as={Link}
+                                                            to={`/category/${item._id}`}
+                                                        >{item.name}</Dropdown.Item>
+                                                    ) : null
+                                                }
                                             </DropdownButton>
                                         </li>
                                     </ul>
@@ -69,7 +94,7 @@ export const NavbarGeneral = (props) => {
                             {/* Links container & drawer menu container */}
                             <div className="ms-auto">
                                 <div className="d-flex">
-                                <div>
+                                    <div>
                                         <DropdownButton
                                             variant="white"
                                             className="profile-dropdown-btn-container"
@@ -77,26 +102,26 @@ export const NavbarGeneral = (props) => {
                                             align="end"
                                             title={<User size={20} />}
                                         >
-                                            <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-2">My Media</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-3">Upload</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
+                                            <Dropdown.Item as={Link} to="/account">My Media</Dropdown.Item>
+                                            <Dropdown.Item as={Link} to="/account/upload">Upload</Dropdown.Item>
+                                            <Dropdown.Item as={Link} to="/account/settings">Settings</Dropdown.Item>
+                                            <Dropdown.Item onClick={doLogout}>Logout</Dropdown.Item>
                                         </DropdownButton>
                                     </div>
                                     <div>
                                         <CustomButton
                                             className="btn-success border-0 d-none d-lg-block ms-2"
                                             style={{ fontSize: 14, borderRadius: 25, padding: "6px 20px", marginTop: 2 }}
-                                            onclick={goUpload}>  
-
+                                            onClick={goUpload}
+                                        >
                                             <Upload size={14} /> Upload
                                         </CustomButton>
                                     </div>
                                     <div>
                                         <CustomButton
                                             className="btn-gray rounded-circle d-lg-none circle__padding__sm ms-2"
-                                            onClick={() => setShow(true)}>
-                                           
+                                            onClick={() => setShow(true)}
+                                        >
                                             <Menu size={20} />
                                         </CustomButton>
                                     </div>
@@ -106,9 +131,11 @@ export const NavbarGeneral = (props) => {
                     </Container.Column>
                 </Container.Row>
             </Container.Fluid>
+
             {/* Mobile drawer */}
             <CustomDrawer
                 show={show}
+                data={data}
                 onHide={() => setShow(false)}
             />
         </div>

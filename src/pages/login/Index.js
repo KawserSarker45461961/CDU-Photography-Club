@@ -106,21 +106,23 @@ const Index = () => {
                                             </Container.Column>
 
                                             {/* Social media login buttons */}
-                                            <Container.Column className="col-lg-6 mt-4">
+                                            <Container.Column className="col-lg-6 mt-4 text-center">
 
-                                                {/* Facebook login button */}
-                                                <CustomButton
-                                                    type="button"
-                                                    className="facebook-login-button w-100 mb-3"
-                                                >Login with facebook</CustomButton>
+                                                 {/* Facebook login button */}
+                                                 <FacebookLogin
+                                                    appId="261936559215416"
+                                                    autoLoad={true}
+                                                    fields="name,email"
+                                                    callback={responseFacebook}
+                                                    cssClass="my-facebook-button-class"
+                                                    onClick={
+                                                        <CustomButton
+                                                            type="button"
+                                                        >Login with facebook</CustomButton>
+                                                    }
+                                                />
 
-                                                {/* Google login button */}
-                                                <CustomButton
-                                                    type="button"
-                                                    className="google-login-button w-100"
-                                                >Login with google</CustomButton>
-
-                                                <div className="text-end mt-2">
+                                                <div className="mt-3">
                                                     <p className="font-14 text-muted mb-0">Have no account? <Link to="/register">Register</Link></p>
                                                     <p className="font-14 text-muted mb-0">Forgot password? <Link to="/reset">Reset</Link></p>
                                                 </div>

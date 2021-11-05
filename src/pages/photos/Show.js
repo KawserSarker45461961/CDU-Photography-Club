@@ -64,15 +64,17 @@ const Show = () => {
                                     </div>
                                     <div className="ps-2 pt-1">
                                         <h6 className="text-capitalize mb-1">
-                                            <Link
-                                                to={`/users/kawser`}
-                                                className="text-dark text-decoration-none"
-                                            >photos</Link>
-                                        </h6>
-                                        <p className="text-muted font-13 mb-2">{CommaNumber(1200)} images</p>
+                                        <Link
+                                                    to={`/users/${data.uploadedBy._id}`}
+                                                    className="text-dark text-decoration-none"
+                                                >{data.uploadedBy && data.uploadedBy.name ? data.uploadedBy.name : "Not available"}</Link>
+                                            </h6>
+                                            <p className="text-muted font-13 mb-2">
+                                                {CommaNumber(data.uploadedBy && data.uploadedBy.total ? data.uploadedBy.total : 0)} images
+                                            </p>
 
-                                        <Link to={`/users/kawser`}>
-                                            <CustomButton
+                                            <Link to={`/users/${data.uploadedBy._id}`}>
+                                                <CustomButton
                                                 className="btn-gray font-13"
                                                 style={{ borderRadius: 25, padding: "4px 13px" }}
                                             >View Profile</CustomButton>
